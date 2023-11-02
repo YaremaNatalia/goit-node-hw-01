@@ -1,13 +1,11 @@
- import { program } from "commander";
+import { program } from "commander";
 import contactServises from "./contacts.js";
-
-
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
       const allContacts = await contactServises.listContacts();
-      console.log(allContacts);
+      console.table(allContacts);
       break;
 
     case "get":
@@ -51,11 +49,6 @@ program.parse();
 
 const options = program.opts();
 invokeAction(options);
-
-
-
-
-
 
 // invokeAction({ action: "list" });
 // invokeAction({ action: "get", id: "5" });
